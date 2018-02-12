@@ -1,0 +1,15 @@
+<h1>Users</h1>
+
+<div class="alert alert-warning" ng-hide="users">
+    <p>There aren't any users!</p>
+</div>
+<table class="table table-bordered" ng-show="users != null">
+    <tr>
+        <th>First name</th>
+        <th>Surname</th>
+    </tr>
+    <tr ng-repeat="user in users">
+        <td>{{user.first}}</td>
+        <td><a ng-click="remove(item.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+    </tr>
+</table>

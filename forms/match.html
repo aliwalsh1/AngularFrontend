@@ -1,0 +1,18 @@
+<h1>{{$parent.settings.pageTitle}}</h1>
+
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
+
+<div class="required-field-block">
+    <input type="number" placeholder="First Team ID" ng-model="match.firstTeamID" class="form-control" required>
+    <input type="number" placeholder="Second Team ID" ng-model="match.secondTeamID" class="form-control" required>
+    <input type="text" placeholder="First team colours" ng-model="match.firstTeamColours" class="form-control">
+    <input type="text" placeholder="Second team colours" ng-model="match.secondTeamColours" class="form-control">
+    <input type="text" placeholder="pitch" ng-model="match.pitch" class="form-control">
+    <input type="datetime-local" placeholder="when" ng-model="match.dateAndTime" class="form-control">
+    <input type="number" placeholder="League ID" ng-model="match.leagueID" class="form-control">
+    <input type="number" placeholder="first team result" ng-model="match.firstTeamScore" class="form-control">
+    <input type="number" placeholder="second team result" ng-model="match.secondTeamScore" class="form-control">
+
+</div>
+
+<button class="btn btn-primary" ng-click="submit($parent.match)">{{$parent.settings.action}}</button>

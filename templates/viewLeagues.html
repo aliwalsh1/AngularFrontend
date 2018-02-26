@@ -1,0 +1,15 @@
+<h1>Leagues</h1>
+
+<div class="alert alert-warning" ng-hide="leagues">
+    <p>There aren't any leagues!</p>
+</div>
+<table class="table table-bordered" ng-show="leagues != null">
+    <tr>
+        <th>League Name</th>
+        <th> </th>
+    </tr>
+    <tr ng-repeat="league in leagues">
+        <td>{{league.leagueName}}</td>
+        <td><a ng-click="remove(league.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+    </tr>
+</table>

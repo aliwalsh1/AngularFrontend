@@ -25,6 +25,10 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
                 templateUrl: 'templates/viewMatches.html',
                 controller: 'MatchCtrl'
             })
+            .when('/createMatch', {
+                templateUrl: 'templates/createMatch.html',
+                controller: 'CreateMatchCtrl'
+            })
             .when('/tournaments', {
                 templateUrl: 'templates/viewTournaments.html',
                 controller: 'TournsCtrl'
@@ -37,13 +41,9 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
                 templateUrl: 'templates/createTeam.html',
                 controller: 'CreateTeamCtrl'
             })
-            .when('/results', {
-                templateUrl: 'templates/viewResults.html',
-                controller: 'ResultsCtrl'
-            })
-            .when('/createResult', {
-                templateUrl: 'templates/createResult.html',
-                controller: 'CreateResultCtrl'
+            .when('/leagues', {
+                templateUrl: 'templates/viewLeagues.html',
+                controller: 'LeaguesCtrl'
             })
             .otherwise({redirectTo: '/home'});
     }])
@@ -207,13 +207,42 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
         }
     }])
 
-    .controller('ResultsCtrl', ['$scope', 'Results', '$route', function ($scope, Results, $route) {
-        Results.get(function (data) {
-            $scope.results = data.response;
+    .controller('CreateMatchCtrl', ['$scope', 'Matches', function ($scope, Matches) {
+        $scope.settings = {
+            pageTitle: "Add Match",
+            action: "Add"
+        };
+
+        $scope.match = {
+            id: "",
+            firstTeamID: "",
+            secondTeamID: "",
+            firstTeamColours: "",
+            secondTeamColours:"",
+            pitch:"",
+            dateAndTime: "",
+            leagueID:"",
+            firstTeamScore:"",
+            secondTeamScore:""
+        };
+
+        $scope.submit = function () {
+            Matches.save({match: $scope.match}).$promise.then(function (data) {
+                if (data.response) {
+                    angular.copy({}, $scope.match);
+                    $scope.settings.success = "The match has been created correctly!";
+                }
+            })
+        }
+    }])
+
+    .controller('LeaguesCtrl', ['$scope', 'Leagues', '$route', function ($scope, Leagues, $route) {
+        Leagues.get(function (data) {
+            $scope.leagues = data.response;
         });
 
         $scope.remove = function (id) {
-            Results.delete({id: id}).$promise.then(function (data) {
+            Leagues.delete({id: id}).$promise.then(function (data) {
                 if (data.response) {
                     $route.reload();
                 }
@@ -221,29 +250,6 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
         }
     }])
 
-    .controller('CreateResultCtrl', ['$scope', 'Results', function ($scope, Results) {
-        $scope.settings = {
-            pageTitle: "Create Result",
-            action: "Send"
-        };
-
-        $scope.result = {
-            id: "",
-            firstTeamID: "",
-            secondTeamID: "",
-            firstTeamResult: "",
-            secondTeamResult: ""
-        };
-
-        $scope.submit = function () {
-            Results.save({result: $scope.result}).$promise.then(function (data) {
-                if (data.response) {
-                    angular.copy({}, $scope.result);
-                    $scope.settings.success = "The result has been saved!";
-                }
-            })
-        }
-    }])
 
 
     .factory('Users', ['$resource', function ($resource) {
@@ -274,8 +280,9 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
             update: {method: "PUT", params: {id: "@_id"}}
         })
     }])
-    .factory('Results', ['$resource', function ($resource) {
-        return $resource('http://localhost:8888/malletapi/results/:id', {id: "@_id"}, {
+
+    .factory('Leagues', ['$resource', function ($resource) {
+        return $resource('http://localhost:8888/malletapi/leagues/:id', {id: "@_id"}, {
             update: {method: "PUT", params: {id: "@_id"}}
         })
     }])

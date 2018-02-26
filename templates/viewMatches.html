@@ -11,6 +11,9 @@
         <th>secondTeamColours</th>
         <th>Pitch</th>
         <th>Date and Time</th>
+        <th>League ID</th>
+        <th>First Team Result</th>
+        <th>Second Team Result</th>
         <th> </th>
     </tr>
     <tr ng-repeat="match in matches">
@@ -20,6 +23,10 @@
         <td>{{match.secondTeamColours}}</td>
         <td>{{match.pitch}}</td>
         <td>{{match.dateAndTime}}</td>
+        <td>{{match.leagueID}}</td>
+        <td>{{match.firstTeamResult}}</td>
+        <td>{{match.secondTeamResult}}</td>
+
         <td><a ng-click="remove(match.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
     </tr>
 </table>

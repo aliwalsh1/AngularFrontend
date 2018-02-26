@@ -1,0 +1,21 @@
+<h1>Teams</h1>
+
+<div class="alert alert-warning" ng-hide="teams">
+    <p>There aren't any teams!</p>
+</div>
+<table class="table table-bordered" ng-show="teams != null">
+    <tr>
+        <th>Name</th>
+        <th>level</th>
+        <th>colours</th>
+        <th>tournIDs</th>
+        <th> </th>
+    </tr>
+    <tr ng-repeat="team in teams">
+        <td>{{team.teamName}}</td>
+        <td>{{team.level}}</td>
+        <td>{{team.colours}}</td>
+        <td>{{team.tournIDs}}</td>
+        <td><a ng-click="remove(team.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+    </tr>
+</table>

@@ -1,0 +1,21 @@
+<h1>Results</h1>
+
+<div class="alert alert-warning" ng-hide="results">
+    <p>There aren't any results!</p>
+</div>
+<table class="table table-bordered" ng-show="results != null">
+    <tr>
+        <th>First team ID</th>
+        <th>secondTeamID</th>
+        <th>firstTeamResult</th>
+        <th>secondTeamResult</th>
+        <th> </th>
+    </tr>
+    <tr ng-repeat="result in results">
+        <td>{{result.firstTeamID}}</td>
+        <td>{{result.secondTeamID}}</td>
+        <td>{{result.firstTeamResult}}</td>
+        <td>{{result.secondTeamResult}}</td>
+        <td><a ng-click="remove(result.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+    </tr>
+</table>

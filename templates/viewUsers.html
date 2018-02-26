@@ -7,9 +7,11 @@
     <tr>
         <th>First name</th>
         <th>Surname</th>
+        <th> </th>
     </tr>
     <tr ng-repeat="user in users">
         <td>{{user.first}}</td>
-        <td><a ng-click="remove(item.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+        <td>{{user.last}}</td>
+        <td><a ng-click="remove(user.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
     </tr>
 </table>

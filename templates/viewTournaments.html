@@ -1,1 +1,23 @@
 <h1>Tournaments</h1>
+
+<div class="alert alert-warning" ng-hide="tournaments">
+    <p>There aren't any tournaments!</p>
+</div>
+<table class="table table-bordered" ng-show="tournaments != null">
+    <tr>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Location</th>
+        <th>Team IDs</th>
+        <th> </th>
+    </tr>
+    <tr ng-repeat="tournament in tournaments">
+        <td>{{tournament.tournamentName}}</td>
+        <td>{{tournament.startDate}}</td>
+        <td>{{tournament.endDate}}</td>
+        <td>{{tournament.location}}</td>
+        <td>{{tournament.teamIDs}}</td>
+        <td><a ng-click="remove(tournament.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+    </tr>
+</table>

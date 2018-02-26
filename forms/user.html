@@ -1,13 +1,26 @@
-<!--<h1>{{$parent.settings.pageTitle}}</h1>-->
+<h1>{{$parent.settings.pageTitle}}</h1>
 
-<!--<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>-->
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
 
-<!--<div class="required-field-block">-->
-    <!--<select ng-model="Users.id" class="form-control">-->
-        <!--<option value="">Select a User</option>-->
-        <!--<option ng-repeat="user in Users" value="{{user.id}}">{{user.first}}</option>-->
-    <!--</select>-->
-<!--</div>-->
+<div class="required-field-block">
+    <input type="text" placeholder="Username" ng-model="user.username" class="form-control">
+    <input type="text" placeholder="Title" ng-model="user.title" class="form-control">
+    <input type="text" placeholder="First name" ng-model="user.first" class="form-control">
+    <input type="text" placeholder="Surname" ng-model="user.last" class="form-control">
+    <input type="text" placeholder="Gender" ng-model="user.gender" class="form-control">
+    <input type="email" placeholder="Email" ng-model="user.email" class="form-control">
+    <input type="number" placeholder="Handicap" ng-model="user.handicap" class="form-control">
+    <input type="text" placeholder="ip" ng-model="user.ip" class="form-control">
+    <input type="number" placeholder="Current player?" ng-model="user.currentPlayer" class="form-control">
+    <input type="text" placeholder="Password" ng-model="user._password" class="form-control">
+    <input type="datetime-local" placeholder="Leave blank" ng-model="user.salt" class="form-control">
+    <input type="number" placeholder="team ID" ng-model="user.teamIDs" class="form-control">
 
+    <!--NOT WORKING-->
 
-<!--<button class="btn btn-primary" ng-click="submit($parent.Users)">{{$parent.settings.action}}</button>-->
+    <!--<div>-->
+        <!--<select ng-model="user.teamIDs" ng-options="team.id for team in teams"></select>-->
+    <!--</div>-->
+</div>
+
+<button class="btn btn-primary" ng-click="submit($parent.user)">{{$parent.settings.action}}</button>

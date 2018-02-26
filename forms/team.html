@@ -1,0 +1,12 @@
+<h1>{{$parent.settings.pageTitle}}</h1>
+
+<p ng-show="$parent.settings.success" class="alert alert-success">{{$parent.settings.success}}</p>
+
+<div class="required-field-block">
+    <input type="text" placeholder="Team Name" ng-model="team.teamName" class="form-control">
+    <input type="text" placeholder="Level" ng-model="team.level" class="form-control">
+    <input type="text" placeholder="colours" ng-model="team.colours" class="form-control">
+    <input type="text" placeholder="TournamentIDs" ng-model="team.tournIDs" class="form-control">
+</div>
+
+<button class="btn btn-primary" ng-click="submit($parent.team)">{{$parent.settings.action}}</button>

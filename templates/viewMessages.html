@@ -1,18 +1,21 @@
-<div class="row">
-    <div class="panel-body">
-        <div class="alert alert-warning" ng-hide="messages">
-            <p>There aren't any messages!</p>
-        </div>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="message in messages">
-                <a href="#/edit/{{message.id}}">{{message.subject}}</a>
+<h1>Messages</h1>
 
-                <div class="pull-right action-buttons">
-                    <a href="#/view/{{message.id}}"></a>
-                    <a ng-click="remove(message.id)" class="trash"><span class="glyphicon glyphicon-trash"></span>
-                    </a>
-                </div>
-            </li>
-        </ul>
-    </div>
+<div class="alert alert-warning" ng-hide="messages">
+    <p>There aren't any messages!</p>
 </div>
+<table class="table table-bordered" ng-show="messages != null">
+    <tr>
+        <th>Sender</th>
+        <th>Receiver</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th> </th>
+    </tr>
+    <tr ng-repeat="message in messages">
+        <td>{{message.senderID}}</td>
+        <td>{{message.receiptID}}</td>
+        <td>{{message.subject}}</td>
+        <td>{{message.body}}</td>
+        <td><a ng-click="remove(message.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+    </tr>
+</table>

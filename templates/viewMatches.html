@@ -1,1 +1,25 @@
-<h1> Matches</h1>
+<h1>Matches</h1>
+
+<div class="alert alert-warning" ng-hide="matches">
+    <p>There aren't any matches!</p>
+</div>
+<table class="table table-bordered" ng-show="matches != null">
+    <tr>
+        <th>First team ID</th>
+        <th>secondTeamID</th>
+        <th>firstTeamColours</th>
+        <th>secondTeamColours</th>
+        <th>Pitch</th>
+        <th>Date and Time</th>
+        <th> </th>
+    </tr>
+    <tr ng-repeat="match in matches">
+        <td>{{match.firstTeamID}}</td>
+        <td>{{match.secondTeamID}}</td>
+        <td>{{match.firstTeamColours}}</td>
+        <td>{{match.secondTeamColours}}</td>
+        <td>{{match.pitch}}</td>
+        <td>{{match.dateAndTime}}</td>
+        <td><a ng-click="remove(match.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+    </tr>
+</table>

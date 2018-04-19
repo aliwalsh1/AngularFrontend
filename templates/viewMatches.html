@@ -1,14 +1,17 @@
+ <a href="#/createMatch" class="btn btn-primary" style="float:right; margin: 10px">Create Match</a>
 <h1>Matches</h1>
+
 
 <div class="alert alert-warning" ng-hide="matches">
     <p>There aren't any matches!</p>
 </div>
+
 <table class="table table-bordered" ng-show="matches != null">
     <tr>
-        <th>First team ID</th>
-        <th>secondTeamID</th>
-        <th>firstTeamColours</th>
-        <th>secondTeamColours</th>
+        <th>First Team ID</th>
+        <th>Second Team ID</th>
+        <th>First Team Colours</th>
+        <th>Second Team Colours</th>
         <th>Pitch</th>
         <th>Date and Time</th>
         <th>League ID</th>
@@ -24,9 +27,10 @@
         <td>{{match.pitch}}</td>
         <td>{{match.dateAndTime}}</td>
         <td>{{match.leagueID}}</td>
-        <td>{{match.firstTeamResult}}</td>
-        <td>{{match.secondTeamResult}}</td>
+        <td>{{match.firstTeamScore}}</td>
+        <td>{{match.secondTeamScore}}</td>
 
         <td><a ng-click="remove(match.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
     </tr>
 </table>
+

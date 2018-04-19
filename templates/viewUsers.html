@@ -1,5 +1,6 @@
-<h1>Users</h1>
-
+<a href="#/createUser" class="btn btn-primary" style="float:right; margin: 10px">Create User</a>
+<body>
+<h1 style="color: #4DA9BB">Current Playing Members</h1>
 <div class="alert alert-warning" ng-hide="users">
     <p>There aren't any users!</p>
 </div>
@@ -7,11 +8,15 @@
     <tr>
         <th>First name</th>
         <th>Surname</th>
+        <th>Handicap</th>
         <th> </th>
     </tr>
     <tr ng-repeat="user in users">
         <td>{{user.first}}</td>
         <td>{{user.last}}</td>
-        <td><a ng-click="remove(user.id)" class="trash"/><span class="glyphicon glyphicon-trash"/></td>
+        <td>{{user.handicap}}</td>
+
+        <td><a ng-click="remove(user.id)" class="trash"/><span class="glyphicon glyphicon-envelope"/></td>
     </tr>
 </table>
+</body>

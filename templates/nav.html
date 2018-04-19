@@ -1,3 +1,9 @@
+<!--<script>-->
+    <!--$(".nav a").on("click", function(){-->
+        <!--$(".nav").find(".active").removeClass("active");-->
+        <!--$(this).parent().addClass("active");-->
+    <!--});-->
+<!--</script>-->
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -7,23 +13,25 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#/home">Mallet Manager</a>
-        <img src="logo.png" alt="Mallet Manager" width="45" length="55"/>
+        <a class="navbar-brand" href="#/home" style="font-size: 25px; color: #f05f40">Mallet Manager</a>
+        <a href="#/home"><img src="logo.png" alt="Mallet Manager" width="45" length="55"/></a>
     </div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" style="font-size: 20px">
+            <li><a></a></li>
+            <li><a></a></li>
             <li><a href="#/messages">Messages</a></li>
-            <li><a href="#/sendMessage">Send Message</a></li>
-            <li><a href="#/users">Users</a></li>
-            <li><a href="#/createUser">Create User</a></li>
+            <li><a href="#/users">Players</a></li>
             <li><a href="#/tournaments">Tournaments</a></li>
             <li><a href="#/teams">Teams</a></li>
-            <li><a href="#/createTeam">Create Team</a></li>
             <li><a href="#/matches">Matches</a></li>
-            <li><a href="#/createMatch">Create Match</a></li>
-            <li><a href="#/leagues">View Leagues</a></li>
-
+            <li><a href="#/leagues">Leagues</a></li>
+            <li><a href="#/leagues">Fees</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="font-size: 18px">
+            <li><a>Log out</a></li>
         </ul>
     </div>
 </nav>
+

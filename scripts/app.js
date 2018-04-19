@@ -1,5 +1,4 @@
 var app = angular.module('app', ['ngRoute', 'ngResource'])
-
     .config(['$routeProvider', function ($routerProvider) {
         $routerProvider
             .when('/home', {
@@ -45,6 +44,11 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
                 templateUrl: 'templates/viewLeagues.html',
                 controller: 'LeaguesCtrl'
             })
+            .when('/login', {
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
+            })
+
             .otherwise({redirectTo: '/home'});
     }])
 
@@ -64,31 +68,6 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
         }
     }])
 
-    .controller('sendMessageCtrl', ['$scope', 'Messages', function ($scope, Messages) {
-        $scope.settings = {
-            pageTitle: "Send Message",
-            action: "Send"
-        };
-
-        $scope.message = {
-            id: "",
-            senderID: "",
-            recipientID: "",
-            body: "",
-            uploadID: "",
-            time_stamp:"",
-            ip: ""
-        };
-
-        $scope.submit = function () {
-            Messages.save({message: $scope.message}).$promise.then(function (data) {
-                if (data.response) {
-                    angular.copy({}, $scope.message);
-                    $scope.settings.success = "The message has sent!";
-                }
-            })
-        }
-    }])
 
     .controller('UsersCtrl', ['$scope', 'Users', '$route', function ($scope, Users, $route) {
         //var id = $routeParams.id;  look at the weather example to see how to get a specific item with its id
@@ -100,9 +79,7 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
         $scope.remove = function (id) {
             Users.delete({id: id}).$promise.then(function (data) {
                 if (data.response) {
-                    $scope.reload = function() {
-                        $route.reload();
-                    };
+                    $route.reload();
                 }
             })
         }
@@ -110,8 +87,8 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
 
     .controller('CreateUserCtrl', ['$scope', 'Users', function ($scope, Users) {
         $scope.settings = {
-            pageTitle: "Add User",
-            action: "Add"
+            pageTitle: "Create User",
+            action: "Create"
         };
 
         $scope.user = {
@@ -127,7 +104,8 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
             currentPlayer:"",
             _password:"",
             salt:"",
-            teamIDs:""
+            teamIDs:"",
+            valid:""
         };
 
         $scope.submit = function () {
@@ -209,8 +187,8 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
 
     .controller('CreateMatchCtrl', ['$scope', 'Matches', function ($scope, Matches) {
         $scope.settings = {
-            pageTitle: "Add Match",
-            action: "Add"
+            pageTitle: "Create Match",
+            action: "Create"
         };
 
         $scope.match = {
@@ -276,7 +254,7 @@ var app = angular.module('app', ['ngRoute', 'ngResource'])
     }])
 
     .factory('Matches', ['$resource', function ($resource) {
-        return $resource('http://localhost:8888/malletapi/matches/:id', {id: "@_id"}, {
+        return $resource('http://localhost:8888/malletapi/index.php/matches/list', {
             update: {method: "PUT", params: {id: "@_id"}}
         })
     }])
